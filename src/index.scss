@@ -1,0 +1,33 @@
+$bg-main-color: #242424;
+$font-color: #fff;
+
+$info: #4CC2FF;
+$info-active: #38afea;
+$info-hover: #99EBFF;
+$default: #373535;
+$default-active: #2e2c2c;
+$default-hover:#464444;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: $font-color;
+  background-color: $bg-main-color;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+

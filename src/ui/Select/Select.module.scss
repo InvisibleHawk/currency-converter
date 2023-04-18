@@ -1,0 +1,21 @@
+@use '../../index.scss';
+
+.select {
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    border: .5px solid index.$default;
+    background: index.$default;
+    color: #fff;
+    transition: .3s;
+
+    &:focus, &:active {
+        outline: none;
+        border: .5px solid index.$info-active;
+        background: index.$default-active;
+    }
+}
+
+.option {
+    font-weight: 600;
+}

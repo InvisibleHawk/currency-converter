@@ -1,0 +1,22 @@
+@use '../../index.scss';
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: index.$font-color;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: #1d1d1d;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 2px 5px -1px, rgba(255, 255, 255, 0.25) 0px 1px 3px -1px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.closePanel {
+    display: flex;
+    justify-content: end;
+    padding-bottom: .5rem;
+    border-bottom: .5px solid rgba(255, 255, 255, 0.25);
+}
+
