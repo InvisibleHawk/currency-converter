@@ -1,25 +1,42 @@
-import { useEffect } from "react"
-import { Layout } from "./layout"
-import { useListCurrency } from "./store/store"
-import { getListCurrency } from "./network/currencyAPI"
+import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import { useListCurrency } from './store/store'
+import { getListCurrency } from './network/currencyAPI'
+import { Section } from './ui/Section'
+import { ConvertPair } from './components/ConvertPair'
+import { PricesList } from './components/PricesList'
+import { HistoryList } from './components/HistoryList/HistoryList'
+import { Navbar } from './ui/Navbar'
+import styles from './App.module.scss'
 
 
 function App() {
-  const { setOptionList, setCurrencyA, setCurrencyB, setExchangeRates } = useListCurrency()
+  const setOptionList = useListCurrency((state) => state.setOptionList)
+  const setExchangeRates = useListCurrency((state) => state.setExchangeRates)
 
   useEffect(() => {
     getListCurrency()
       .then(data => {
-        const currencyKey = Object.keys(data.usd)
         setOptionList(data.usd)
         setExchangeRates(data.usd)
-        setCurrencyA('usd')
-        setCurrencyB('rub')
       })
       
   }, [])
 
-  return <Layout />
+  return (
+    <div className={styles.wrapper}>
+      {createPortal(<Navbar />, document.body)}
+      <Section title='Конвертация валют' isClosed={false}>
+        <ConvertPair />
+      </Section>
+      <Section title='Список стоимостей'>
+        <PricesList />
+      </Section>
+      <Section title='История курса конвертации'>
+          <HistoryList />
+      </Section>
+    </div>
+  )
 }
 
 export default App

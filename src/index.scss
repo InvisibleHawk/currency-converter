@@ -8,6 +8,9 @@ $default: #373535;
 $default-active: #2e2c2c;
 $default-hover:#464444;
 
+$border-color: rgba(255, 255, 255, 0.25);
+$ui-color: #1d1d1d;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -29,5 +32,3 @@ body {
   display: flex;
   justify-content: center;
 }
-
-

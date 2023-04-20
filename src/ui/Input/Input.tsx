@@ -6,7 +6,7 @@ interface IInputProps {
     type?: string
 }
 
-export const Input: React.FC<IInputProps> = ({type = "number", ...props}) => {
+export const Input: React.FC<IInputProps> = ({type = 'string', ...props}) => {
   return (
     <input 
       className={styles.input}

@@ -1,0 +1,22 @@
+@use '../../index.scss';
+
+.navbar {
+    display: flex;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    justify-content: space-around;
+    background-color: index.$ui-color;
+    border: .5px solid index.$border-color;
+    border-radius: 5px;
+
+    @media (max-width: 680px) {
+        height: 8%;
+        top: 92%;
+        width: 100%;
+        border: none;
+        right: 0;
+        border-radius: 0;
+    }
+
+}

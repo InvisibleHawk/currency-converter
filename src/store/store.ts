@@ -1,9 +1,9 @@
-import { create } from "zustand"
+import { create } from 'zustand'
 
 
 interface ListCurrencyStore {
     optionList: Array<string> | [],
-    exchangeRates: any
+    exchangeRates: null | any,
     currencyA: string,
     amountA: number,
     currencyB: string,
@@ -19,9 +19,9 @@ interface ListCurrencyStore {
 
 export const useListCurrency = create<ListCurrencyStore>((set, get) => ({
     optionList: [],
-    currencyA: '',
-    currencyB: '',
-    exchangeRates: {},
+    currencyA: 'usd',
+    currencyB: 'rub',
+    exchangeRates: null,
     amountA: 0,
     amountB: 0,
     setExchangeRates: (val) => set({ exchangeRates: val}),

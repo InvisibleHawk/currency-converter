@@ -1,58 +1,56 @@
 import { CurrencyRow } from '../CurrencyRow'
 import { useListCurrency } from '../../store/store'
 import styles from './ConvertPair.module.scss'
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 
 
 export const ConvertPair = () => {
-  const { optionList, exchangeRates, currencyA, currencyB, setCurrencyA, setCurrencyB } = useListCurrency()
+  const { optionList, exchangeRates, currencyA, currencyB, setCurrencyA, setCurrencyB} = useListCurrency()
   const [amount, setAmount] = useState(1)
-  const [rate, setRate] = useState<number>(0)
-  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
-  let amountA: number, amountB: number
+  const [amountInA, setAmountInA] = useState<boolean>(true)
 
-  if(amountInFromCurrency) {
-    amountA = amount
-    amountB = (amount / exchangeRates[currencyA]) * exchangeRates[currencyB]
-  } else {
-    amountB = amount
-    amountA = (amount * exchangeRates[currencyA]) / exchangeRates[currencyB]
-  }
+  const [valA, valB] = useMemo(() => {
+    if(exchangeRates === null) return [0, 0]
+    return (
+      amountInA
+        ? [amount, ((amount / exchangeRates[currencyA]) * exchangeRates[currencyB]).toFixed(2)]
+        : [((amount * exchangeRates[currencyA]) / exchangeRates[currencyB]).toFixed(2), amount]
+
+    )
+  }, [amount, amountInA, exchangeRates, currencyA, currencyB])
+
 
   function handleAmountA(e) {
     setAmount(e.target.value)
-    setAmountInFromCurrency(true)
+    setAmountInA(true)
   }
 
   function handleAmountB(e) {
     setAmount(e.target.value)
-    setAmountInFromCurrency(false)
+    setAmountInA(false)
   }
- 
-  useEffect(() => {
-    setRate(exchangeRates[currencyA])
-    console.log(rate)
-  })
 
   return (
     <div className={styles.container}>
+        <div>
+          <h2></h2>
+        </div>
         <CurrencyRow
           onChangeCurrency={(e) => setCurrencyA(e.target.value)}
           onChangeAmount={handleAmountA}
           selectedOption={currencyA}
           options={optionList}
-          amount={amountA} 
+          amount={valA} 
         />
         <CurrencyRow
           onChangeCurrency={(e) => setCurrencyB(e.target.value)}
           onChangeAmount={handleAmountB}
           selectedOption={currencyB} 
           options={optionList}
-          amount={amountB}
+          amount={valB}
         />
     </div>
-       
   )
 }

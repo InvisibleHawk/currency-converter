@@ -1,0 +1,19 @@
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    flex-basis: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
