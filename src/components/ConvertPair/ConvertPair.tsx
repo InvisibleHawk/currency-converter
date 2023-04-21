@@ -33,9 +33,6 @@ export const ConvertPair = () => {
 
   return (
     <div className={styles.container}>
-        <div>
-          <h2></h2>
-        </div>
         <CurrencyRow
           onChangeCurrency={(e) => setCurrencyA(e.target.value)}
           onChangeAmount={handleAmountA}

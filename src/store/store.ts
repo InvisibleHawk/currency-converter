@@ -5,15 +5,11 @@ interface ListCurrencyStore {
     optionList: Array<string> | [],
     exchangeRates: null | any,
     currencyA: string,
-    amountA: number,
     currencyB: string,
-    amountB: number,
     setExchangeRates: (val: object) => void
     setOptionList: (list: Array<string>) => void
     setCurrencyA: (val: string) => void
     setCurrencyB: (val: string) => void
-    setAmountA: (val: number) => void
-    setAmountB: (val: number) => void
 }
 
 interface SectionsStore {
@@ -35,8 +31,6 @@ export const useListCurrency = create<ListCurrencyStore>((set, get) => ({
     setOptionList: (list) => set({ optionList: Object.keys(list)}), 
     setCurrencyA: (val) => set({ currencyA: val }),
     setCurrencyB: (val) => set({ currencyB: val }),
-    setAmountA: (val) => set({ amountA: val }),
-    setAmountB: (val) => set({ amountB: val })
 }))
 
 export const useStateSections = create<SectionsStore>((set, get) => ({
