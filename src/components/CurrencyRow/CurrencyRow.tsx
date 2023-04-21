@@ -13,7 +13,7 @@ export const CurrencyRow: React.FC<ICurrencyRow> = ({ options, selectedOption, a
 
   return (
     <div>
-        <Input value={amount} onChange={(e) => onChangeAmount(e.target.value)} />
+        <Input type='number' value={amount} onChange={(e) => onChangeAmount(e.target.value)} />
         <Select value={selectedOption} values={options} onChange={onChangeCurrency} />
     </div>
   )
