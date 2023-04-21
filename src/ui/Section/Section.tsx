@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '../Button'
 import styles from './Section.module.scss'
 
 interface ISectionProps {
     children?: React.ReactNode
     isClosed?: boolean,
-    title?: string
+    isClose?: boolean,
+    onClose?: () => void | null
+    title?: string,
+
 }
 
-export const Section: React.FC<ISectionProps> = ({ isClosed = true, title, children}) => {
-  const [isClose, setClose] = useState<boolean>(false)
-  
-  const close = () => setClose(!isClose)
+export const Section: React.FC<ISectionProps> = ({ isClosed = true, isClose = false, onClose, title, children}) => {
 
   return (
     <div className={styles.section} style={{display: isClose ? 'none' : 'block'}}>
@@ -21,7 +21,7 @@ export const Section: React.FC<ISectionProps> = ({ isClosed = true, title, child
           </div>
         {isClosed && 
           <div>
-            <Button onClick={close}>❌</Button>
+            <Button onClick={onClose}>❌</Button>
           </div>
         }
         </div>

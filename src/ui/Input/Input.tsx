@@ -3,7 +3,8 @@ import styles from './Input.module.scss'
 
 interface IInputProps {
     value: number | string,
-    type?: string
+    type?: string,
+    onChange: (e: any) => void
 }
 
 export const Input: React.FC<IInputProps> = ({type = 'string', ...props}) => {

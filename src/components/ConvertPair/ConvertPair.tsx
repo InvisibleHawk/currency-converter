@@ -8,7 +8,6 @@ import { useMemo, useState } from 'react'
 export const ConvertPair = () => {
   const { optionList, exchangeRates, currencyA, currencyB, setCurrencyA, setCurrencyB} = useListCurrency()
   const [amount, setAmount] = useState(1)
-
   const [amountInA, setAmountInA] = useState<boolean>(true)
 
   const [valA, valB] = useMemo(() => {
@@ -22,13 +21,13 @@ export const ConvertPair = () => {
   }, [amount, amountInA, exchangeRates, currencyA, currencyB])
 
 
-  function handleAmountA(e) {
-    setAmount(e.target.value)
+  function handleAmountA(val: number) {
+    setAmount(val)
     setAmountInA(true)
   }
 
-  function handleAmountB(e) {
-    setAmount(e.target.value)
+  function handleAmountB(val: number) {
+    setAmount(val)
     setAmountInA(false)
   }
 

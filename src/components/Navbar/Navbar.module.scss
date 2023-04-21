@@ -3,18 +3,19 @@
 .navbar {
     display: flex;
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    right: 0;
     justify-content: space-around;
     background-color: index.$ui-color;
     border: .5px solid index.$border-color;
     border-radius: 5px;
+    box-sizing: border-box;
+    margin: 1.5rem;
 
     @media (max-width: 680px) {
-        height: 8%;
-        top: 92%;
+        bottom: 0;
         width: 100%;
         border: none;
+        margin: 0;
         right: 0;
         border-radius: 0;
     }

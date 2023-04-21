@@ -1,3 +1,5 @@
+@use './index.scss';
+
 .wrapper {
     display: flex;
     justify-content: center;
@@ -6,28 +8,9 @@
     gap: 1.5rem;
     width: 70vw;
     padding: 3rem 0;
-  
+
     @media (max-width: 680px) {
-        width: 100%;
+        width: 100vw;
         margin-bottom: 20%;
     }
 } 
-
-.table {
-   display: flex;
-   flex-wrap: wrap;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 50%;
-}

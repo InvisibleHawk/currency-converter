@@ -1,6 +1,6 @@
 @use '../../index.scss';
 
-@mixin type($type: index.$default, $radius: 5px, $color: #fff) {
+@mixin type($type: index.$default, $radius: 5px, $color: index.$font-color) {
     background: $type;
     border-radius: $radius;
     padding: .5rem;

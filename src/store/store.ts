@@ -16,6 +16,13 @@ interface ListCurrencyStore {
     setAmountB: (val: number) => void
 }
 
+interface SectionsStore {
+    isSectionPrices: boolean,
+    isSectionHistory: boolean,
+    setSectionPrice: () => void,
+    setSectionHistory: () => void,
+}
+
 
 export const useListCurrency = create<ListCurrencyStore>((set, get) => ({
     optionList: [],
@@ -30,4 +37,11 @@ export const useListCurrency = create<ListCurrencyStore>((set, get) => ({
     setCurrencyB: (val) => set({ currencyB: val }),
     setAmountA: (val) => set({ amountA: val }),
     setAmountB: (val) => set({ amountB: val })
+}))
+
+export const useStateSections = create<SectionsStore>((set, get) => ({
+    isSectionPrices: false,
+    isSectionHistory: false,
+    setSectionPrice: () => set({ isSectionPrices: !get().isSectionPrices }),
+    setSectionHistory: () => set({ isSectionHistory: !get().isSectionHistory }),
 }))
