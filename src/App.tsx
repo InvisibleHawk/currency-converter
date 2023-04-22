@@ -11,42 +11,51 @@ import { HistoryList } from './components/HistoryList/HistoryList'
 import { Navbar } from './components/Navbar'
 import styles from './App.module.scss'
 
-
 function App() {
   const setOptionList = useListCurrency((state) => state.setOptionList)
   const setExchangeRates = useListCurrency((state) => state.setExchangeRates)
-  
-  const { isSectionPrices,
-          isSectionHistory,
-          setSectionPrice,
-          setSectionHistory
-        } = useStateSections((state) => ({
-    isSectionPrices: state.isSectionPrices,
-    isSectionHistory: state.isSectionHistory,
-    setSectionPrice: state.setSectionPrice,
-    setSectionHistory: state.setSectionHistory
-  }), shallow)
+
+  const {
+    isSectionPrices,
+    isSectionHistory,
+    setSectionPrice,
+    setSectionHistory,
+  } = useStateSections(
+    (state) => ({
+      isSectionPrices: state.isSectionPrices,
+      isSectionHistory: state.isSectionHistory,
+      setSectionPrice: state.setSectionPrice,
+      setSectionHistory: state.setSectionHistory,
+    }),
+    shallow
+  )
 
   useEffect(() => {
-    getListCurrency()
-      .then(data => {
-        setOptionList(data.usd)
-        setExchangeRates(data.usd)
-      })
-      
+    getListCurrency().then((data) => {
+      setOptionList(data.usd)
+      setExchangeRates(data.usd)
+    })
   }, [])
 
   return (
     <div className={styles.wrapper}>
       {createPortal(<Navbar />, document.body)}
-      <Section title='Конвертация валют' isClosed={false}>
+      <Section title="Конвертация валют" isClosed={false}>
         <ConvertPair />
       </Section>
-      <Section isClose={isSectionPrices} onClose={setSectionPrice} title='Список стоимостей'>
+      <Section
+        isClose={isSectionPrices}
+        onClose={setSectionPrice}
+        title="Список стоимостей"
+      >
         <PricesList />
       </Section>
-      <Section isClose={isSectionHistory} onClose={setSectionHistory} title='История курса конвертации'>
-          <HistoryList />
+      <Section
+        isClose={isSectionHistory}
+        onClose={setSectionHistory}
+        title="История курса конвертации"
+      >
+        <HistoryList />
       </Section>
     </div>
   )

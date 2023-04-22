@@ -1,10 +1,9 @@
 .containerList {
-    display: flex;
-    flex-direction: row;
-    gap: 3rem;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
 
-    @media (max-width: 680px) {
-        flex-direction: column;
-    }
+  @media (max-width: 680px) {
+    flex-direction: column;
+  }
 }
-

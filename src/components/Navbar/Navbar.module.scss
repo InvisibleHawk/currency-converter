@@ -1,23 +1,22 @@
 @use '../../index.scss';
 
 .navbar {
-    display: flex;
-    position: fixed;
+  display: flex;
+  position: fixed;
+  right: 0;
+  justify-content: space-around;
+  background-color: index.$ui-color;
+  border: 0.5px solid index.$border-color;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 1.5rem;
+
+  @media (max-width: 680px) {
+    bottom: 0;
+    width: 100%;
+    border: none;
+    margin: 0;
     right: 0;
-    justify-content: space-around;
-    background-color: index.$ui-color;
-    border: .5px solid index.$border-color;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin: 1.5rem;
-
-    @media (max-width: 680px) {
-        bottom: 0;
-        width: 100%;
-        border: none;
-        margin: 0;
-        right: 0;
-        border-radius: 0;
-    }
-
+    border-radius: 0;
+  }
 }

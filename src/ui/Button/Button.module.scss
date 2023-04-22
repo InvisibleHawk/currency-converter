@@ -1,35 +1,33 @@
 @use '../../index.scss';
 
 @mixin type($type: index.$default, $radius: 5px, $color: index.$font-color) {
-    background: $type;
-    border-radius: $radius;
-    padding: .5rem;
-    margin: .5rem;
-    font-weight: 600;
-    color: $color;
-    border: none;
-    transition: .2s;
-    cursor: pointer;
+  background: $type;
+  border-radius: $radius;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-weight: 600;
+  color: $color;
+  border: none;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 .default {
-    @include type;
-    &:hover {
-        @include type($type: index.$default-hover)
-    }
-    &:active {
-        @include type($type: index.$default-active)
-    }
+  @include type;
+  &:hover {
+    @include type($type: index.$default-hover);
+  }
+  &:active {
+    @include type($type: index.$default-active);
+  }
 }
-
 
 .info {
-    @include type($type: index.$info, $radius: 5px, $color: #000);
-    &:hover {
-        @include type($type: index.$info-hover, $color: #000)
-    }
-    &:active {
-        @include type($type: index.$info-active, $color: #000)
-    }
+  @include type($type: index.$info, $radius: 5px, $color: #000);
+  &:hover {
+    @include type($type: index.$info-hover, $color: #000);
+  }
+  &:active {
+    @include type($type: index.$info-active, $color: #000);
+  }
 }
-

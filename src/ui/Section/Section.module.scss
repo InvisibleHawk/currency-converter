@@ -1,21 +1,21 @@
 @use '../../index.scss';
 
 .section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: index.$font-color;
-    padding: 1rem;
-    box-sizing: border-box;
-    background-color: index.$ui-color;
-    box-shadow: index.$border-color 0px 2px 5px -1px, index.$border-color 0px 1px 3px -1px;
-    border-radius: 10px;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: index.$font-color;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: index.$ui-color;
+  box-shadow: index.$border-color 0px 2px 5px -1px,
+    index.$border-color 0px 1px 3px -1px;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .sectionPanel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
