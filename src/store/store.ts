@@ -6,7 +6,7 @@ interface ListCurrencyStore {
   currencyA: string
   currencyB: string
   setExchangeRates: (val: object) => void
-  setOptionList: (list: Array<Record<string, number>>) => void
+  setOptionList: (list: Array<string> | []) => void
   setCurrencyA: (val: string) => void
   setCurrencyB: (val: string) => void
 }
@@ -26,7 +26,7 @@ export const useListCurrency = create<ListCurrencyStore>((set, get) => ({
   amountA: 0,
   amountB: 0,
   setExchangeRates: (val) => set({ exchangeRates: val }),
-  setOptionList: (list) => set({ optionList: Object.keys(list) }),
+  setOptionList: (list) => set({ optionList: list }),
   setCurrencyA: (val) => set({ currencyA: val }),
   setCurrencyB: (val) => set({ currencyB: val }),
 }))

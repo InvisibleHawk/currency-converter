@@ -1,28 +1,43 @@
-const currencyURL = (date: string, endpoint: string) =>
-  `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/${date}/currencies/${endpoint}.json`
+const baseCurrencyURL = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1'
+
+const exchangeRateURL = (date: string, endpoint: string) =>
+  `${baseCurrencyURL}/${date}/currencies/${endpoint}.json`
+
+const targetCurrencyExchangeRateURL = (
+  date: string,
+  currencyA: string,
+  currencyB: string
+) => `${baseCurrencyURL}/${date}/currencies/${currencyA}/${currencyB}.json`
+
+export type Currency = {
+  [key: string]: number
+} & { date: string }
+
+export type ExchangeRate = {
+  usd: Record<string, number>
+  date: string
+}
+
+export const getExchangeRate = async (): Promise<ExchangeRate | null> => {
+  try {
+    const res = await fetch(exchangeRateURL('latest', 'usd'))
+    if (!res.ok) throw new Error('Failed to fetch')
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
 
 const currenciesDateEndpoint = async (
   date: string,
   currencyA: string,
   currencyB: string
-) => {
+): Promise<Currency> => {
   const res = await fetch(
-    `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/${date}/currencies/${currencyA}/${currencyB}.json`
+    targetCurrencyExchangeRateURL(date, currencyA, currencyB)
   )
-  const resJson = await res.json()
-  return resJson
-}
-
-export const getListCurrency = async () => {
-  try {
-    const res = await fetch(currencyURL('latest', 'usd'))
-    if (!res.ok) throw new Error('Failed to fetch')
-    const list = await res.json()
-    return list
-  } catch (error) {
-    console.log(error)
-    return null
-  }
+  return await res.json()
 }
 
 export const getHistoryCurrency = (valA: string, valB: string) => {

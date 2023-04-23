@@ -13,11 +13,11 @@ export const ConvertPair = () => {
     setCurrencyB,
   } = useListCurrency()
   const [amount, setAmount] = useState(1)
-  const [amountInA, setAmountInA] = useState<boolean>(true)
+  const [isAmountInA, setIsAmountInA] = useState<boolean>(true)
 
   const [valA, valB] = useMemo(() => {
     if (exchangeRates === null) return [0, 0]
-    return amountInA
+    return isAmountInA
       ? [
           amount,
           (
@@ -32,16 +32,16 @@ export const ConvertPair = () => {
           ).toFixed(2),
           amount,
         ]
-  }, [amount, amountInA, exchangeRates, currencyA, currencyB])
+  }, [amount, isAmountInA, exchangeRates, currencyA, currencyB])
 
   function handleAmountA(val: number) {
     setAmount(val)
-    setAmountInA(true)
+    setIsAmountInA(true)
   }
 
   function handleAmountB(val: number) {
     setAmount(val)
-    setAmountInA(false)
+    setIsAmountInA(false)
   }
 
   return (

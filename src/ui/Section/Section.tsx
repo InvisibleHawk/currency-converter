@@ -17,11 +17,10 @@ export const Section: React.FC<ISectionProps> = ({
   title,
   children,
 }) => {
+  if (isClose) return null
+
   return (
-    <div
-      className={styles.section}
-      style={{ display: isClose ? 'none' : 'block' }}
-    >
+    <div className={styles.section}>
       <div className={styles.sectionPanel}>
         <div>
           <h3>{title}</h3>

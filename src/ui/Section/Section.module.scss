@@ -1,9 +1,7 @@
 @use '../../index.scss';
 
 .section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   color: index.$font-color;
   padding: 1rem;
   box-sizing: border-box;

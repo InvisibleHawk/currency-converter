@@ -3,11 +3,11 @@ import { createPortal } from 'react-dom'
 import { useListCurrency } from './store/store'
 import { useStateSections } from './store/store'
 import { shallow } from 'zustand/shallow'
-import { getListCurrency } from './network/currencyAPI'
+import { getExchangeRate } from './network/currencyAPI'
 import { Section } from './ui/Section'
 import { ConvertPair } from './components/ConvertPair'
 import { PricesList } from './components/PricesList'
-import { HistoryList } from './components/HistoryList/HistoryList'
+import { HistoryList } from './components/HistoryList/'
 import { Navbar } from './components/Navbar'
 import styles from './App.module.scss'
 
@@ -31,9 +31,11 @@ function App() {
   )
 
   useEffect(() => {
-    getListCurrency().then((data) => {
-      setOptionList(data.usd)
-      setExchangeRates(data.usd)
+    getExchangeRate().then((data) => {
+      if (data) {
+        setOptionList(Object.keys(data.usd))
+        setExchangeRates(data.usd)
+      }
     })
   }, [])
 
