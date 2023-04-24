@@ -42,7 +42,7 @@ function App() {
   return (
     <div className={styles.wrapper}>
       {createPortal(<Navbar />, document.body)}
-      <Section title="Конвертация валют" isClosed={false}>
+      <Section title="Конвертация валют" closable={false}>
         <ConvertPair />
       </Section>
       <Section

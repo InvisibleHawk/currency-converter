@@ -4,14 +4,14 @@ import styles from './Section.module.scss'
 
 interface ISectionProps {
   children?: React.ReactNode
-  isClosed?: boolean
+  closable?: boolean
   isClose?: boolean
   onClose?: () => void | null
   title?: string
 }
 
 export const Section: React.FC<ISectionProps> = ({
-  isClosed = true,
+  closable = true,
   isClose = false,
   onClose,
   title,
@@ -25,7 +25,7 @@ export const Section: React.FC<ISectionProps> = ({
         <div>
           <h3>{title}</h3>
         </div>
-        {isClosed && (
+        {closable && (
           <div>
             <Button onClick={onClose}>❌</Button>
           </div>

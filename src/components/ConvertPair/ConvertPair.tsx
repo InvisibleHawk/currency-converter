@@ -12,7 +12,7 @@ export const ConvertPair = () => {
     setCurrencyA,
     setCurrencyB,
   } = useListCurrency()
-  const [amount, setAmount] = useState(1)
+  const [amount, setAmount] = useState<number>(1)
   const [isAmountInA, setIsAmountInA] = useState<boolean>(true)
 
   const [valA, valB] = useMemo(() => {
